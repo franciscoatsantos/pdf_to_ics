@@ -13,7 +13,7 @@ Extracts events from a structured PDF (e.g., training schedules, timetables) and
 
 ## Installation
 ```bash
-git clone https://github.com/your-org/pdf_to_google_calendar.git
+git clone https://github.com/franciscoatsantos/pdf_to_google_calendar.git
 cd pdf_to_google_calendar
 python -m venv .venv
 source .venv/bin/activate
