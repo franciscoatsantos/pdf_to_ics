@@ -45,7 +45,7 @@ class Parser:
             # Getting month and year that are always in the first index of the first list
             month, year = self.get_month_year(table[0][0])
 
-            # Build events in-place (duplicate fix retained)
+            # Build events in-place (duplicate fix, because I screwed up teh first time)
             self.build_json(tables=table, index=2, month=month, year=year, events=event_calendar)
 
 
@@ -58,10 +58,10 @@ class Parser:
             matches = re.findall(self.month_year_re_pattern, value, flags=re.IGNORECASE)
             
             month = str(self.MONTH_DICT[matches[0].split("/")[0].lower()])
-            if month == "3" or month == "4":
-                year = "2026"
-            else:
-                year = str(datetime.today().year)[:2] + matches[0].split("/")[1]
+            year = str(datetime.today().year)[:2] + matches[0].split("/")[1]
+            if datetime.today().month > int(month) and datetime.today().year == int(year): # There are some typos in the file I was provided
+                abbr_year = str(int(matches[0].split("/")[1]) + 1)
+
             return month, year
         except Exception as e:
             print(f"Error parsing month and year: {e}")

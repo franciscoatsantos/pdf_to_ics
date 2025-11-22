@@ -126,3 +126,6 @@ dmypy.json
 # IDEs
 .idea/
 .vscode/
+
+# ignore the sample pdf file
+*.pdf
